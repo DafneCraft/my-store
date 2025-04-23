@@ -32,10 +32,6 @@ export default function ImageCarousel() {
     );
   };
 
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
-
   // Efecto para reproducción automática
   useEffect(() => {
     let intervalId;
@@ -84,20 +80,6 @@ export default function ImageCarousel() {
         >
           <ChevronRight size={24} />
         </button>
-      </div>
-
-      {/* Indicadores y controles */}
-      <div className="flex justify-center mt-4">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-3 h-3 mx-1 rounded-full focus:outline-none ${
-              index === currentIndex ? "bg-blue-600" : "bg-gray-300"
-            }`}
-            aria-label={`Ir a la diapositiva ${index + 1}`}
-          />
-        ))}
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
 import { Section } from "lucide-react";
+import TestimonialCarousel from "./CarruselTestimony";
+import ProductCarousel from "./CarouselProducts";
 
 export default function HomeSections() {
   return (
@@ -61,16 +63,12 @@ export default function HomeSections() {
       <div className="flex flex-col items-left justify-center p-2 bg-gray-400">
         <h2>Mejor Vendidos</h2>
         <p>Echa un vistazo a nuestro productos mas vendidos</p>
-        <div>
-          <p>Productos (slides)</p>
-        </div>
+        <ProductCarousel />
       </div>
       {/*Section 5 */}
       <div className="flex flex-col items-center justify-center p-2">
         <h2>Testimonios</h2>
-        <div>
-          <p>Testimonios (slides)</p>
-        </div>
+        <TestimonialCarousel />
       </div>
       {/*Section 6 */}
       <div className="flex flex-col items-center justify-center p-2 bg-gray-400">
