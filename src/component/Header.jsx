@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import MobileMenu from "./MenuMobile";
 import {
   FiMenu,
@@ -65,24 +66,33 @@ function Navigation() {
     <nav className="hidden md:flex items-center justify-center">
       <ul className="flex space-x-4">
         <li>
-          <a href="#" className="text-black hover:text-gray-400">
+          <Link to="/src/pages/Home" className="text-black hover:text-gray-400">
             Home
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="text-black hover:text-gray-400">
+          <Link
+            to="/src/pages/Store"
+            className="text-black hover:text-gray-400"
+          >
             Store
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="text-black hover:text-gray-400">
+          <Link
+            to="/src/pages/About"
+            className="text-black hover:text-gray-400"
+          >
             About
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="text-black hover:text-gray-400">
+          <Link
+            to="/src/pages/Contact"
+            className="text-black hover:text-gray-400"
+          >
             Contact
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>

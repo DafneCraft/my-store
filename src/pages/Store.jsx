@@ -1,7 +1,7 @@
 import Header from "../component/Header.jsx";
 import Footer from "../component/Footer.jsx";
 
-function Contact() {
+export default function Store() {
   return (
     <>
       <Header />
@@ -9,5 +9,3 @@ function Contact() {
     </>
   );
 }
-
-export default Contact;

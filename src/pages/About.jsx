@@ -1,8 +1,11 @@
-function About () {
-    return (
-        <>
-        </>
-    );
-}
+import Header from "../component/Header.jsx";
+import Footer from "../component/Footer.jsx";
 
-export default About;
+export default function About() {
+  return (
+    <>
+      <Header />
+      <Footer />
+    </>
+  );
+}
