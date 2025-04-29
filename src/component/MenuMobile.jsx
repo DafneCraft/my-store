@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef();
@@ -49,30 +49,30 @@ export default function MobileMenu() {
       {/* Menú solo se renderiza cuando isOpen es true */}
       {isOpen && (
         <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
           >
             Home
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/store"
             className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
           >
             Store
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/about"
             className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
           >
             About
-          </a>
-          <a
-            href="#"
+          </Link>
+          <Link
+            to="/contact"
             className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
           >
             Contact
-          </a>
+          </Link>
         </div>
       )}
     </div>
