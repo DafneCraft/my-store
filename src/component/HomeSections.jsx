@@ -176,7 +176,7 @@ export default function HomeSections() {
     },
   ];
   return (
-    <div>
+    <div className="pt-30 min-h-screen">
       <div className="flex justify-center p-5 bg-blue-300">
         {Section1Variable.map((item, index) => (
           <Section1Component
@@ -269,7 +269,7 @@ function Section1Component({ icon: IconComponent, title, content }) {
   );
 }
 
-const Section2Component = ({ name, imageUrl, link }) => {
+export const Section2Component = ({ name, imageUrl, link }) => {
   return (
     <Link
       to={link}

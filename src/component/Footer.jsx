@@ -32,15 +32,24 @@ function Menu() {
 function SocialMediaIcons() {
   return (
     <div className="flex items-center justify-center text-2xl p-2">
-      <button className="text-black p-2 rounded hover:bg-gray-200">
+      <a
+        href="https://www.facebook.com/"
+        className="text-black p-2 rounded cursor-pointer hover:bg-gray-300"
+      >
         <FiFacebook />
-      </button>
-      <button className="text-black p-2 rounded hover:bg-gray-200">
+      </a>
+      <a
+        href="https://www.instagram.com/"
+        className="text-black p-2 rounded cursor-pointer hover:bg-gray-300"
+      >
         <FiInstagram />
-      </button>
-      <button className="text-black p-2 rounded hover:bg-gray-200">
+      </a>
+      <a
+        href="https://x.com/"
+        className="text-black p-2 rounded cursor-pointer hover:bg-gray-300"
+      >
         <FiTwitter />
-      </button>
+      </a>
     </div>
   );
 }
