@@ -7,7 +7,7 @@ function Home() {
   return (
     <>
       <Header />
-      <div className="pt-30 min-h-screen">
+      <div className="max-md:pt-40 pt-30 min-h-screen">
         <ImageCarousel />
         <HomeSections />
       </div>

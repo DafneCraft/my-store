@@ -36,7 +36,7 @@ function StoreContent() {
     },
   ];
   return (
-    <div className="pt-35 min-h-screen w-full bg-gray-50 px-4 py-8 sm:px-6 lg:px-8">
+    <div className="max-md:pt-50 pt-35 min-h-screen w-full bg-gray-50 px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Encabezado */}
         <div className="text-center mb-8">

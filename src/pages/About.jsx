@@ -13,7 +13,7 @@ export default function About() {
 
 function AboutContent() {
   return (
-    <div className="pt-35 min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="max-md:pt-50 pt-35 min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Contenedor principal - cambia a columna en móviles */}
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12">
