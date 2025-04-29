@@ -1,96 +1,80 @@
 import { Link } from "react-router-dom";
 import MobileMenu from "./MenuMobile";
-import {
-  FiMenu,
-  FiSearch,
-  FiUser,
-  FiHeart,
-  FiShoppingCart,
-} from "react-icons/fi";
+import { FiSearch, FiUser, FiHeart } from "react-icons/fi";
+import CartButton from "./Cart";
 
-function MessageHeader(props) {
+{
+  /*This component is above the header and is used to display a message
+    It is a simple component that takes a text prop and displays it*/
+}
+function MessageAboveHeader(props) {
   return (
-    <div className="text-center bg-gray-500 text-white p-1">
+    <div className="text-center bg-blue-500 text-white p-1">
       <p>{props.text}</p>
     </div>
   );
 }
 
+{
+  /*This component is used to display the logo of the website*/
+}
 function Logo({ ShowOnMobile = false }) {
   return (
-    <div
+    <Link
+      to={"/"}
       className={`${
         ShowOnMobile ? "flex md:hidden" : "hidden md:flex"
       } items-center justify-center`}
     >
-      <img
-        src="../../public/NekoTechLogo.png"
-        alt="Logo"
-        className="w-40 h-15"
-      />
-    </div>
+      <img src="/NekoTechLogo.png" alt="Logo" className="w-40 h-15" />
+    </Link>
   );
 }
 
-function MenuBurguer({ ShowOnMobile = false }) {
-  return (
-    <div className={`md:hidden ${ShowOnMobile ? "block" : "hidden"}`}>
-      <button className="text-black p-2 rounded">
-        <FiMenu />
-      </button>
-    </div>
-  );
+{
+  /*This component is used to display the menu icons on the right side of the header*/
 }
-
 function MenuIcons() {
   return (
     <div className="flex items-center justify-center text-2xl">
-      <button className="text-black p-2 rounded">
+      <button className="text-black p-2 rounded cursor-pointer hover:bg-gray-100">
         <FiSearch />
       </button>
-      <button className="text-black p-2 rounded">
+      <Link to="/login" className="text-black p-2 rounded hover:bg-gray-100">
         <FiUser />
-      </button>
-      <button className="text-black p-2 rounded">
+      </Link>
+      <button className="text-black p-2 rounded cursor-pointer hover:bg-gray-100">
         <FiHeart />
       </button>
-      <button className="text-black p-2 rounded">
-        <FiShoppingCart />
-      </button>
+      <CartButton />
     </div>
   );
 }
 
+{
+  /*This component is used to display the navigation menu on the header*/
+}
 function Navigation() {
   return (
     <nav className="hidden md:flex items-center justify-center">
       <ul className="flex space-x-4">
         <li>
-          <Link to="/src/pages/Home" className="text-black hover:text-gray-400">
+          <Link to="/" className="text-black hover:text-gray-400">
             Home
           </Link>
         </li>
         <li>
-          <Link
-            to="/src/pages/Store"
-            className="text-black hover:text-gray-400"
-          >
+          <Link to="/store" className="text-black hover:text-gray-400">
             Store
           </Link>
         </li>
         <li>
-          <Link
-            to="/src/pages/About"
-            className="text-black hover:text-gray-400"
-          >
+          <Link to="/about" className="text-black hover:text-gray-400">
             About
           </Link>
         </li>
         <li>
-          <Link
-            to="/src/pages/Contact"
-            className="text-black hover:text-gray-400"
-          >
+          <Link to="/contact" className="text-black hover:text-gray-400">
             Contact
           </Link>
         </li>
@@ -99,10 +83,13 @@ function Navigation() {
   );
 }
 
+{
+  /*This component is used to display the header of the website*/
+}
 function Header() {
   return (
-    <header>
-      <MessageHeader text="Hola . olaH" />
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md">
+      <MessageAboveHeader text="Buy products more than $50, shipping is free!" />
       <div>
         <Logo ShowOnMobile={true} />
       </div>

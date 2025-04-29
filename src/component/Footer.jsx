@@ -24,11 +24,6 @@ function Menu() {
             Contact
           </a>
         </li>
-        <li>
-          <a href="#" className="text-black hover:text-gray-400">
-            F.A.Q
-          </a>
-        </li>
       </ul>
     </nav>
   );
@@ -56,7 +51,7 @@ function EmailSubscription() {
       <input
         type="email"
         placeholder="Subscribe to our newsletter"
-        className="p-2 border border-gray-300 rounded"
+        className="p-2 border bg-white border-gray-300 rounded"
       />
       <button className="p-2 bg-blue-500 text-white rounded hover:bg-blue-600">
         Subscribe
@@ -87,7 +82,7 @@ function Allrights() {
 function Footer() {
   return (
     <footer>
-      <div className="flex flex-col items-center justify-center bg-gray-100 p-4">
+      <div className="flex flex-col items-center justify-center bg-gray-200 p-6">
         <Menu />
         <SocialMediaIcons />
         <EmailSubscription />

@@ -1,38 +1,40 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function ImageCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Array de imágenes de ejemplo (usando placeholders)
-  const images = [
-    {
-      src: "/Images1.jpg",
-      alt: "Hermoso paisaje natural",
-    },
-    {
-      src: "/Images2.jpg",
-      alt: "Ciudad moderna al atardecer",
-    },
-    {
-      src: "/Images3.jpg",
-      alt: "Playa tropical paradisíaca",
-    },
-  ];
+  // Memoizamos el array de imágenes
+  const images = useMemo(
+    () => [
+      {
+        src: "/Images1.jpg",
+        alt: "Hombre sonriendo con un telefono móvil y unos auriculares",
+      },
+      {
+        src: "/Images2.jpg",
+        alt: "Mesa con varias cosas, telefeono, mando, auriculares y laptop",
+      },
+      {
+        src: "/Images3.jpg",
+        alt: "Mujer hablando atraves de un microfono frente a una laptop con auriculares",
+      },
+    ],
+    []
+  ); // El array de dependencias está vacío porque las imágenes son estáticas
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [images]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
-  };
+  }, [images]);
 
-  // Efecto para reproducción automática
   useEffect(() => {
     let intervalId;
     intervalId = setInterval(() => {
@@ -43,14 +45,12 @@ export default function ImageCarousel() {
         clearInterval(intervalId);
       }
     };
-  }, [currentIndex]);
+  }, [nextSlide]);
 
   return (
     <div className="max-w-10xl mx-auto">
       <div className="relative overflow-hidden shadow-lg">
-        {/* Container principal */}
-        <div className="relative h-250">
-          {/* Carrusel de imágenes */}
+        <div className="relative h-200">
           {images.map((image, index) => (
             <div
               key={index}
@@ -66,17 +66,15 @@ export default function ImageCarousel() {
             </div>
           ))}
         </div>
-
-        {/* Botones de navegación */}
         <button
           onClick={prevSlide}
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 focus:outline-none z-20"
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 cursor-pointer focus:outline-none z-20"
         >
           <ChevronLeft size={24} />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 focus:outline-none z-20"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 cursor-pointer focus:outline-none z-20"
         >
           <ChevronRight size={24} />
         </button>

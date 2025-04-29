@@ -1,36 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Ana Pérez",
-    text: "¡Excelente servicio! Me ayudaron mucho con mi proyecto.",
-  },
-  {
-    id: 2,
-    name: "Carlos Gómez",
-    text: "Muy profesionales, los recomiendo totalmente.",
-  },
-  {
-    id: 3,
-    name: "Luisa Martínez",
-    text: "Increíble experiencia, volvería a trabajar con ellos.",
-  },
-];
-
-export default function TestimonialCarousel() {
+export default function TestimonialCarousel({ testimonials }) {
+  const testimonial = testimonials;
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextTestimonial = () => {
+  const nextTestimonial = useCallback(() => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+      prevIndex === testimonial.length - 1 ? 0 : prevIndex + 1
     );
-  };
+  }, [testimonial.length]);
 
   const prevTestimonial = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+      prevIndex === 0 ? testimonial.length - 1 : prevIndex - 1
     );
   };
 
@@ -45,16 +28,16 @@ export default function TestimonialCarousel() {
         clearInterval(intervalId);
       }
     };
-  }, [currentIndex]);
+  }, [currentIndex, nextTestimonial]);
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-white">
+    <div className="max-w-xl mx-auto p-6 bg-blue-300">
       <div className="text-center p-4">
-        <p className="text-gray-600 italic mb-4">
-          "{testimonials[currentIndex].text}"
+        <p className="text-black italic mb-4">
+          "{testimonial[currentIndex].text}"
         </p>
-        <p className="font-semibold text-gray-800">
-          — {testimonials[currentIndex].name}
+        <p className="font-semibold text-black">
+          — {testimonial[currentIndex].name}
         </p>
       </div>
 

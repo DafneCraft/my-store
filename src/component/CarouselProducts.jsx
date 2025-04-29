@@ -3,27 +3,8 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-export default function ProductCarousel() {
-  const products = [
-    { id: 1, name: "Camiseta 1", price: "$20" },
-    { id: 2, name: "Pantalón 2", price: "$30" },
-    { id: 3, name: "Camiseta 3", price: "$20" },
-    { id: 4, name: "Pantalón 4", price: "$30" },
-    { id: 5, name: "Camiseta 5", price: "$20" },
-    { id: 6, name: "Pantalón 6", price: "$30" },
-    { id: 7, name: "Camiseta 7", price: "$20" },
-    { id: 8, name: "Pantalón 8", price: "$30" },
-    { id: 9, name: "Camiseta 9", price: "$20" },
-    { id: 10, name: "Pantalón 10", price: "$30" },
-    { id: 11, name: "Camiseta 11", price: "$20" },
-    { id: 12, name: "Pantalón 12", price: "$30" },
-    { id: 13, name: "Camiseta 13", price: "$20" },
-    { id: 14, name: "Pantalón 14", price: "$30" },
-    { id: 15, name: "Camiseta 15", price: "$20" },
-    { id: 16, name: "Pantalón 16", price: "$30" },
-    // ... más productos
-  ];
-
+export default function ProductCarousel({ products }) {
+  const product0 = products;
   return (
     <div className="relative px-4 py-8">
       <Swiper
@@ -37,9 +18,9 @@ export default function ProductCarousel() {
           1024: { slidesPerView: 4 }, // Desktop: 4 productos
         }}
       >
-        {products.map((product) => (
+        {product0.map((product) => (
           <SwiperSlide key={product.id}>
-            <div className="bg-white p-4 rounded-lg shadow-md border border-gray-100">
+            <div className="bg-gray-200 p-4 rounded-lg shadow-md border border-gray-100">
               <img
                 src={product.image}
                 alt={product.name}
@@ -51,8 +32,6 @@ export default function ProductCarousel() {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      {/* Botones de navegación personalizados (opcional) */}
     </div>
   );
 }
