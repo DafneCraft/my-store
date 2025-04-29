@@ -36,19 +36,28 @@ function StoreContent() {
     },
   ];
   return (
-    <div className="flex flex-col items-center justify-center h-screen mt-30 p-100 bg-gray-50">
-      <h1 className="text-3xl font-bold mb-4 mt-4">Store</h1>
-      <p className="text-gray-700">Welcome to the store!</p>
-      <div className="grid grid-cols-2 gap-6 mt-6">
-        {Category.map((item, index) => (
-          <Section2Component
-            key={index}
-            name={item.title}
-            imageUrl={item.image}
-            flex-col
-            link={item.link}
-          />
-        ))}
+    <div className="pt-35 min-h-screen w-full bg-gray-50 px-4 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        {/* Encabezado */}
+        <div className="text-center mb-8">
+          <h1 className="text-2xl font-bold sm:text-3xl md:text-4xl text-gray-900 mb-2">
+            Store
+          </h1>
+          <p className="text-gray-600 sm:text-lg">Welcome to the store!</p>
+        </div>
+
+        {/* Grid de categorías - responsive */}
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-4">
+          {Category.map((item, index) => (
+            <Section2Component
+              key={index}
+              name={item.title}
+              imageUrl={item.image}
+              link={item.link}
+              className="w-full h-full" // Asegura que el componente hijo sea responsive
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

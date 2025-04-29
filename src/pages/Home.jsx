@@ -7,8 +7,10 @@ function Home() {
   return (
     <>
       <Header />
-      <ImageCarousel />
-      <HomeSections />
+      <div className="pt-30 min-h-screen">
+        <ImageCarousel />
+        <HomeSections />
+      </div>
       <Footer />
     </>
   );

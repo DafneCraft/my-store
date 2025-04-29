@@ -13,7 +13,7 @@ function Contact() {
 
 function FormContact() {
   return (
-    <div className="mt-30 flex flex-col items-center justify-center h-screen bg-gray-50">
+    <div className="pt-30 flex flex-col items-center justify-center h-screen bg-gray-50">
       <h1 className="text-3xl font-bold mb-4">Contact Us</h1>
       <form className="bg-white p-6 rounded shadow-md w-80">
         <div className="mb-4">
