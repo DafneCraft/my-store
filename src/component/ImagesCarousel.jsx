@@ -48,13 +48,14 @@ export default function ImageCarousel() {
   }, [nextSlide]);
 
   return (
-    <div className="max-w-10xl mx-auto">
+    <div className="w-full">
       <div className="relative overflow-hidden shadow-lg">
-        <div className="relative h-200">
+        {/* Contenedor del carrusel - full height en pantallas grandes */}
+        <div className="relative h-60 sm:h-80 md:h-screen max-h-[32rem] lg:max-h-[48rem] xl:max-h-none">
           {images.map((image, index) => (
             <div
               key={index}
-              className={`absolute top-0 left-0 w-full h-full transition-opacity duration-500 ease-in-out ${
+              className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
                 index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
               }`}
             >
@@ -62,21 +63,26 @@ export default function ImageCarousel() {
                 src={image.src}
                 alt={image.alt}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
           ))}
         </div>
+
+        {/* Botones de navegación - tamaño responsivo */}
         <button
           onClick={prevSlide}
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 cursor-pointer focus:outline-none z-20"
+          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-75 cursor-pointer focus:outline-none z-20 transition-all"
+          aria-label="Previous image"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 cursor-pointer focus:outline-none z-20"
+          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 sm:p-3 rounded-full hover:bg-opacity-75 cursor-pointer focus:outline-none z-20 transition-all"
+          aria-label="Next image"
         >
-          <ChevronRight size={24} />
+          <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
         </button>
       </div>
     </div>

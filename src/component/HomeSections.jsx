@@ -176,8 +176,8 @@ export default function HomeSections() {
     },
   ];
   return (
-    <div className="pt-30 min-h-screen">
-      <div className="flex justify-center p-5 bg-blue-300">
+    <div>
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 p-4 sm:p-6 lg:p-8 bg-blue-300">
         {Section1Variable.map((item, index) => (
           <Section1Component
             key={index}
@@ -188,31 +188,38 @@ export default function HomeSections() {
         ))}
       </div>
       {/*Section 2 */}
-      <div className="flex flex-col items-center justify-center p-10">
-        <div className="grid grid-cols-4 gap-6">
-          {Section2Variable.map((item, index) => (
-            <Section2Component
-              key={index}
-              name={item.title}
-              imageUrl={item.image}
-              flex-col
-              link={item.link}
-            />
-          ))}
+      <div className="flex flex-col items-center justify-center py-8 px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            {Section2Variable.map((item, index) => (
+              <Section2Component
+                key={index}
+                name={item.title}
+                imageUrl={item.image}
+                link={item.link}
+              />
+            ))}
+          </div>
         </div>
       </div>
       {/*Section 3 */}
-      <div className="flex flex-col items-center justify-center p-10 bg-blue-300">
-        <h2 className="text-2xl">Why choose us?</h2>
-        <div>
-          {Section3Variable.map((item, index) => (
-            <Section1Component
-              key={index}
-              icon={item.icon}
-              title={item.title}
-              content={item.content}
-            />
-          ))}
+      <div className="flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-blue-300">
+        <div className="w-full max-w-7xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8 sm:mb-12">
+            Why choose us?
+          </h2>
+
+          <div className="flex flex-col justify-center lg:flex-row gap-6 sm:gap-8">
+            {Section3Variable.map((item, index) => (
+              <Section1Component
+                key={index}
+                icon={item.icon}
+                title={item.title}
+                content={item.content}
+                className="flex-1" // Para que ocupen igual espacio
+              />
+            ))}
+          </div>
         </div>
       </div>
       {/*Section 4 */}
@@ -261,10 +268,16 @@ export default function HomeSections() {
 
 function Section1Component({ icon: IconComponent, title, content }) {
   return (
-    <div className="flex flex-col items-center justify-center p-4">
-      {IconComponent && <IconComponent size={48} />}
-      <h2 className="mt-2 font-bold text-2xl text-center">{title}</h2>
-      <p className="text-center text-1xl text-black">{content}</p>
+    <div className="flex flex-col items-center justify-center w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.333%-1.5rem)] lg:w-[calc(25%-2rem)] p-4 sm:p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
+      {IconComponent && (
+        <IconComponent className="w-10 h-10 sm:w-12 sm:h-12 text-blue-600" />
+      )}
+      <h2 className="mt-3 font-bold text-xl sm:text-2xl text-center text-gray-800">
+        {title}
+      </h2>
+      <p className="mt-2 text-center text-base sm:text-lg text-gray-600">
+        {content}
+      </p>
     </div>
   );
 }
@@ -273,24 +286,25 @@ export const Section2Component = ({ name, imageUrl, link }) => {
   return (
     <Link
       to={link}
-      className="group relative block h-70 overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+      className="group relative block w-full overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 aspect-square"
     >
       {/* Imagen de fondo */}
       <img
         src={imageUrl}
         alt={name}
-        className="w-70 h-70 object-cover transition-transform duration-500 group-hover:scale-105"
+        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        loading="lazy"
       />
 
       {/* Overlay semitransparente */}
       <div
         style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
-        className="absolute inset-0 group-hover:bg-opacity-40 transition-all duration-300"
+        className="absolute inset-0 bg-opacity-50 group-hover:bg-opacity-40 transition-all duration-300"
       />
 
       {/* Texto */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <h3 className="text-white text-2xl font-bold tracking-wide text-center px-4 py-2 rounded-lg transform group-hover:scale-110 transition-transform duration-300">
+      <div className="absolute inset-0 flex items-center justify-center p-2">
+        <h3 className="text-white text-lg sm:text-xl md:text-2xl font-bold text-center px-3 py-2 transform group-hover:scale-105 transition-transform duration-300">
           {name}
         </h3>
       </div>
