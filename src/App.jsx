@@ -6,6 +6,9 @@ import Contact from "./pages/Contact";
 import LoginUser from "./pages/LoginUser";
 import CreateUser from "./pages/CreateUser";
 import ForgotPassword from "./pages/ForgotPassword";
+import DataBaseP from "./database/PageDataBase";
+import ProductDetailsPage from "./pages/ProductDetail";
+import ProductPage from "./pages/ProductPage";
 
 export default function App() {
   return (
@@ -18,6 +21,9 @@ export default function App() {
         <Route exact path="/login" element={<LoginUser />} />
         <Route exact path="/register" element={<CreateUser />} />
         <Route exact path="/forgot-password" element={<ForgotPassword />} />
+        <Route exact path="/database" element={<DataBaseP />} />
+        <Route exact path="/products" element={<ProductPage />} />
+        <Route exact path="/product/:id" element={<ProductDetailsPage />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>

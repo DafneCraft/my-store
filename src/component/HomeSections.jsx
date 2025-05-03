@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiLock } from "react-icons/fi";
 import { PiMoneyWavyBold } from "react-icons/pi";
@@ -8,8 +8,36 @@ import { GrUserExpert, GrDocumentText } from "react-icons/gr";
 import { CiDiscount1 } from "react-icons/ci";
 import TestimonialCarousel from "./CarruselTestimony";
 import ProductCarousel from "./CarouselProducts";
+import obtenerTopDiezProductosValorados from "../database/ProductosDiezMejores";
 
 export default function HomeSections() {
+  const [topProductos, setTopProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const cargarTopProductos = async () => {
+      try {
+        const productos = await obtenerTopDiezProductosValorados();
+        setTopProductos(productos);
+      } catch (e) {
+        setError(e);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    cargarTopProductos();
+  }, []);
+
+  if (loading) {
+    return console.log("Cargando los mejores productos...");
+  }
+
+  if (error) {
+    return console.log("Error al cargar los productos: ", error.message);
+  }
+
   const Section1Variable = [
     {
       icon: FiLock,
@@ -228,7 +256,7 @@ export default function HomeSections() {
         <p className="text-2xl ml-4">
           Take a look at our best selling products
         </p>
-        <ProductCarousel products={Section4Variable} />
+        <ProductCarousel products={topProductos} />
       </div>
       {/*Section 5 */}
       <div className="flex flex-col items-center justify-center p-10 bg-blue-300">

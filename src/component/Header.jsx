@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import MobileMenu from "./MenuMobile";
 import { FiSearch, FiUser, FiHeart } from "react-icons/fi";
 import CartButton from "./Cart";
-
+import BarIcon from "./SearchIcon";
+import ProductList from "./ProductList";
 {
   /*This component is above the header and is used to display a message
     It is a simple component that takes a text prop and displays it*/
@@ -37,9 +39,7 @@ function Logo({ ShowOnMobile = false }) {
 function MenuIcons() {
   return (
     <div className="flex items-center justify-center text-2xl">
-      <button className="text-black p-2 rounded cursor-pointer hover:bg-gray-100">
-        <FiSearch />
-      </button>
+      <BarIcon onSearch={Search} />
       <Link to="/login" className="text-black p-2 rounded hover:bg-gray-100">
         <FiUser />
       </Link>
@@ -64,7 +64,7 @@ function Navigation() {
           </Link>
         </li>
         <li>
-          <Link to="/store" className="text-black hover:text-gray-400">
+          <Link to="/products" className="text-black hover:text-gray-400">
             Store
           </Link>
         </li>
@@ -82,6 +82,37 @@ function Navigation() {
     </nav>
   );
 }
+
+const Search = () => {
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+
+  const handleSearch = async (searchTerm) => {
+    setIsSearching(true);
+    // Example usage of searchTerm in search logic
+    const results = await fetch(
+      `/api/search?query=${encodeURIComponent(searchTerm)}`
+    ).then((res) => res.json());
+    setSearchResults(results);
+    setIsSearching(false);
+  };
+
+  return (
+    <div>
+      <Navbar onSearch={handleSearch} />{" "}
+      {/* Aquí pasamos handleSearch como la prop onSearch */}
+      <div className="container mx-auto mt-8">
+        {isSearching && <p>Buscando productos...</p>}
+        {!isSearching && searchResults.length > 0 && (
+          <ProductList products={searchResults} />
+        )}
+        {!isSearching && searchResults.length === 0 && (
+          <p>No se encontraron productos.</p>
+        )}
+      </div>
+    </div>
+  );
+};
 
 {
   /*This component is used to display the header of the website*/
