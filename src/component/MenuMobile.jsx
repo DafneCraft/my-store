@@ -56,7 +56,7 @@ export default function MobileMenu() {
             Home
           </Link>
           <Link
-            to="/store"
+            to="/products"
             className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
           >
             Store
